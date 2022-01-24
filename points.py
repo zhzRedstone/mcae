@@ -227,7 +227,7 @@ class Shapes(Utils):
         """
         计算控制点2(i+1, a*((i+2)-(i)))
         """
-        ret2urn i_p1 - a * (i_p2 - i)
+        return i_p1 - a * (i_p2 - i)
 
     def bezier_get_count_list(self, points_list, step):
         """
