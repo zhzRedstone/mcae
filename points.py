@@ -13,7 +13,7 @@ class Utils:
         """
         x1, y1, z1 = p1[0], p1[1], p1[2]
         x2, y2, z2 = p2[0], p2[1], p2[2]
-        d = ((x2 - x1) ** 2 + (y2 - y1) ** 2 + (z2 - z1) ** 2) ** 0.5
+        d = ((x2-x1)**2 + (y2-y1)**2 + (z2-z1)**2)**0.5
         return d
 
     def move(self, points, x, y, z):
@@ -178,7 +178,7 @@ class Shapes(Utils):
         给出经过三点求抛物线参数
         """
         # 系数矩阵
-        coe = np.array([[x1 ** 2, x1, 1], [x2 ** 2, x2, 1], [x3 ** 2, x3, 1]])
+        coe = np.array([[x1**2, x1, 1], [x2**2, x2, 1], [x3**2, x3, 1]])
         # 结果矩阵
         sol = np.transpose(np.array([[y1, y2, y3]]))
         # 返回系数
@@ -195,12 +195,12 @@ class Shapes(Utils):
         points = []
         x, y, z = x1, y1, z1
         d = self.get_distance([x1, y1, z1], [x2, y2, z2])
-        count = int(d / step)
-        h = abs(d / 2)
+        count = int(d/step)
+        h = abs(d/2)
         px = 0
         a, b, c = self.solve_parabola(0, d / 2, d, 0, h, 0)
-        dx = (x2 - x1) / count
-        dz = (z2 - z1) / count
+        dx = (x2-x1)/count
+        dz = (z2-z1)/count
         for i in range(0, count + 1):
             points.append([x, y, z])
             px += step
@@ -215,19 +215,19 @@ class Shapes(Utils):
         """
         三阶贝塞尔曲线方程
         """
-        return p0 * (1 - t) ** 3 + 3 * p1 * t * (1 - t) ** 2 + 3 * p2 * t ** 2 * (1 - t) + p3 * t ** 3
+        return p0*(1-t)**3 + 3*p1*t*(1-t)**2 + 3*p2*t**2*(1-t) + p3*t**3
 
     def bezier3x_get_c1(self, i, i_p1, i_n1, a=1 / 4):
         """
         计算控制点1(i, a*((i+1)-(i-1)))
         """
-        return i + a * (i_p1 - i_n1)
+        return i+a*(i_p1-i_n1)
 
     def bezier3x_get_c2(self, i_p1, i_p2, i, a=1 / 4):
         """
         计算控制点2(i+1, a*((i+2)-(i)))
         """
-        return i_p1 - a * (i_p2 - i)
+        ret2urn i_p1 - a * (i_p2 - i)
 
     def bezier_get_count_list(self, points_list, step):
         """
